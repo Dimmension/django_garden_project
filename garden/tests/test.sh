@@ -5,6 +5,7 @@ export POSTGRES_USER=test
 export POSTGRES_PASSWORD=test
 export POSTGRES_DB=test
 
+export SECRET_KEY=sirius
 export MINIO_USE_HTTPS=False
 export MINIO_ACCESS_KEY=Px50bigfQ2RwNKphG0Ee
 export MINIO_SECRET_KEY=H6XnWKXrsSeiRxLONkdmgoEtCs3zPIn0nphAtRmm
