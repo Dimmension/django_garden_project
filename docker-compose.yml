@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  postgis:
+    image: postgis/postgis
+    container_name: postgis_garden
+    restart: always
+    env_file: .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}" ]
+      interval: 1s
+      timeout: 1s
+      retries: 60
+    volumes:
+      - ./data/postgis:/var/lib/postgresql/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  minio:
+    image: minio/minio
+    container_name: minio_garden
+    command: server --console-address ":9001" /data
+    restart: always
+    env_file: .env
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./data/minio:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  migrator:
+    image: 'ghcr.io/amacneil/dbmate:2.12'
+    container_name: migrator_garden
+    env_file: .env
+    volumes:
+      - ./migrations:/db/migrations
+    command: -u "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@host.docker.internal:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable" up
+    depends_on:
+      postgis:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

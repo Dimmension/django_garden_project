@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Coords</h1>
+
+    {% if coords_list %}
+    <ul>
+
+      {% for coord in coords_list %}
+      <li>
+        <a href="{% url 'coord'%}?id={{coord.id}}">{{ coord.id }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no coords for now..</p>
+    {% endif %}
+{% endblock %}

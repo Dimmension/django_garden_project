@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Herbariums</h1>
+
+    {% if herbariums_list %}
+    <ul>
+
+      {% for herbarium in herbariums_list %}
+      <li>
+        <a href="{% url 'herbarium'%}?id={{herbarium.id}}">{{ herbarium.depart }}</a> {{herbarium.region}}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no herbariums for now..</p>
+    {% endif %}
+{% endblock %}

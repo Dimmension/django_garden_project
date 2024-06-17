@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Collect Places</h1>
+
+    {% if collect_places_list %}
+    <ul>
+
+      {% for collect_place in collect_places_list %}
+      <li>
+        <a href="{% url 'collect_place'%}?id={{collect_place.id}}">{{ collect_place.country }}</a> {{collect_place.region}}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no collect places for now..</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Labels</h1>
+
+    {% if labels_list %}
+    <ul>
+
+      {% for label in labels_list %}
+      <li>
+        <a href="{% url 'label'%}?id={{label.id}}">{{ label.institute }}</a> {{ label.project }} {{ label.name }}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no labels for now..</p>
+    {% endif %}
+{% endblock %}

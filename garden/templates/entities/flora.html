@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Flora page</h1>
+
+    {% if flora %}
+    <ul>
+
+      <li>
+        <a>TaxonomyCOL: {{ flora.taxonomycol }}</a><br>
+        <a>Author: {{ flora.author }}</a><br>
+        <a>IsAlive: {{ flora.alive}}</a><br>
+        <a>ID: {{ flora.id }}</a><br>
+      </li>
+    </ul>
+
+    {% else %}
+      <p>Flora not found..</p>
+    {% endif %}
+{% endblock %}

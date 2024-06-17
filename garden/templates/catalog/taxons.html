@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Taxons</h1>
+
+    {% if taxons_list %}
+    <ul>
+
+      {% for taxon in taxons_list %}
+      <li>
+        <a href="{% url 'taxon'%}?id={{taxon.id}}">{{ taxon.genus }}</a> {{taxon.species}}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no floras for now..</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Collect Place page</h1>
+
+    {% if collect_place %}
+    <ul>
+
+      <li>
+        <a>Country: {{ collect_place.country }}</a><br>
+        <a>Region: {{ collect_place.region }}</a><br>
+      </li>
+    </ul>
+
+    {% else %}
+      <p>Collect Place not found..</p>
+    {% endif %}
+{% endblock %}

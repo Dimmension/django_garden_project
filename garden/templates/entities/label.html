@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Label page</h1>
+
+    {% if label %}
+    <ul>
+
+      <li>
+        <a>Project: {{ label.project }}</a><br>
+        <a>Institute: {{ label.institute }}</a><br>
+      </li>
+    </ul>
+
+    {% else %}
+      <p>Label not found..</p>
+    {% endif %}
+{% endblock %}

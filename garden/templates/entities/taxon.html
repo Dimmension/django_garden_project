@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Taxon page</h1>
+
+    {% if taxon %}
+    <ul>
+
+      <li>
+        <a>Genus: {{ taxon.genus }}</a><br>
+        <a>Species: {{ taxon.species}}</a><br>
+      </li>
+    </ul>
+
+    {% else %}
+      <p>Taxon not found..</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Coord page</h1>
+
+    {% if coord %}
+    <ul>
+
+      <li>
+        <a>Latitude: {{ coord.latitude }}</a><br>
+        <a>Longitude: {{ coord.longitude }}</a><br>
+      </li>
+    </ul>
+
+    {% else %}
+      <p>Coord not found..</p>
+    {% endif %}
+{% endblock %}

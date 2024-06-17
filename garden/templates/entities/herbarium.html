@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Herbarium page</h1>
+
+    {% if herbarium %}
+    <ul>
+
+      <li>
+        <a>Depart: {{ herbarium.depart }}</a><br>
+        <a>Region: {{ herbarium.region }}</a><br>
+      </li>
+    </ul>
+
+    {% else %}
+      <p>Herbarium not found..</p>
+    {% endif %}
+{% endblock %}

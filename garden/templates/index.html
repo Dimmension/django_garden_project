@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Botanical Garden</h1>
+
+  <p>Welcome to <em>Garden</em></p>
+
+  <p>Garden record counts:</p>
+  <ul>
+    <li><strong>Floras:</strong> {{ floras }}</li>
+    <li><strong>Collect Places:</strong> {{ collect_places }}</li>
+    <li><strong>Coords:</strong> {{ coords }}</li>
+    <li><strong>Herbariums:</strong> {{ herbariums }}</li>
+    <li><strong>Labels:</strong> {{ labels }}</li>
+    <li><strong>Comments:</strong> {{ comments }}</li>
+    <li><strong>Taxons:</strong> {{ taxons }}</li>
+  </ul>
+
+{% endblock %}

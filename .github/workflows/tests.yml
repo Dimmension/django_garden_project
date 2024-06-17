@@ -1,0 +1,35 @@
+name: Tests Garden app
+on: [push]
+jobs:
+  container-job:
+    name: Tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgis/postgis:15-3.4
+        env:
+          POSTGRES_PASSWORD: test
+          POSTGRES_DBNAME: postgres
+          POSTGRES_USER: test
+          POSTGRES_PORT: 5432
+          POSTGRES_HOST: 127.0.0.1
+        ports:
+        - 5432:5432
+    steps:
+    - uses: actions/checkout@v2
+    - name: Установка Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.11.0"
+    - name: Install requirements
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Installing GDAL
+      run: |
+        sudo apt-get update
+        sudo apt-get install binutils libproj-dev gdal-bin
+    - name: Tests for api
+      run: |
+        chmod +x garden/tests/test.sh
+        ./garden/tests/test.sh tests.test_api

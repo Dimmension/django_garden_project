@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Floras</h1>
+
+    {% if floras_list %}
+    <ul>
+
+      {% for flora in floras_list %}
+      <li>
+        <a href="{% url 'flora'%}?id={{flora.id}}">{{ flora.taxonomycol }}</a> {{flora.author}} {{flora.alive}}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no floras for now..</p>
+    {% endif %}
+{% endblock %}

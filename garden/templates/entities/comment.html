@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Comment page</h1>
+
+    {% if comment %}
+    <ul>
+
+      <li>
+        <a>Description: {{ comment.description }}</a><br>
+      </li>
+    </ul>
+
+    {% else %}
+      <p>Comment not found..</p>
+    {% endif %}
+{% endblock %}
