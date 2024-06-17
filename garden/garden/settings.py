@@ -110,22 +110,15 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+TEST_RUNNER = 'tests.runner.PostgresSchemaRunner'
 
-if DEBUG:
-    AWS_ACCESS_KEY_ID = os.getenv('MINIO_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.getenv('MINIO_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.getenv('MINIO_STORAGE_BUCKET_NAME')
-    AWS_S3_ENDPOINT_URL = os.getenv('MINIO_API')
-    AWS_S3_USE_SSL = False
-
-MINIO_ENDPOINT = 'localhost:9000'
-MINIO_ACCESS_KEY = os.getenv('MINIO_ACCESS_KEY_ID')
-MINIO_SECRET_KEY = os.getenv('MINIO_SECRET_ACCESS_KEY')
+MINIO_CONSISTENCY_CHECK_ON_START = True
+MINIO_ENDPOINT = f"{os.getenv('MINIO_HOST')}:{os.getenv('MINIO_PORT')}"
+MINIO_ACCESS_KEY = os.getenv('MINIO_ACCESS_KEY')
+MINIO_SECRET_KEY = os.getenv('MINIO_SECRET_KEY')
 MINIO_USE_HTTPS = False
-truths = ('True', 'true', '1')
-MINIO_CONSISTENCY_CHECK_ON_START = os.getenv('MINIO_CONSISTENCY_CHECK_ON_START', False) in truths
-MINIO_PRIVATE_BUCKETS = []
-MINIO_PUBLIC_BUCKETS = [
+MINIO_PRIVATE_BUCKETS = [
     'images',
 ]
+
+MINIO_BUCKET_CHECK_ON_SAVE = True
