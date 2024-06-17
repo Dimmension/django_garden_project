@@ -138,5 +138,5 @@ truths = ('True', 'true', '1')
 MINIO_CONSISTENCY_CHECK_ON_START = os.getenv('MINIO_CONSISTENCY_CHECK_ON_START', False) in truths
 MINIO_PRIVATE_BUCKETS = []
 MINIO_PUBLIC_BUCKETS = [
-    'static',
+    'images',
 ]
