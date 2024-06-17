@@ -112,8 +112,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TEST_RUNNER = 'tests.runner.PostgresSchemaRunner'
 
-MINIO_CONSISTENCY_CHECK_ON_START = True
-MINIO_ENDPOINT = f"{os.getenv('MINIO_HOST')}:{os.getenv('MINIO_PORT')}"
+MINIO_CONSISTENCY_CHECK_ON_START = False
+MINIO_ENDPOINT = 'http://localhost:9000'
 MINIO_ACCESS_KEY = os.getenv('MINIO_ACCESS_KEY')
 MINIO_SECRET_KEY = os.getenv('MINIO_SECRET_KEY')
 MINIO_USE_HTTPS = False
