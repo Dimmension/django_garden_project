@@ -4,8 +4,8 @@ from typing import Any
 from django.contrib.auth import decorators, mixins
 from django.core import paginator as django_paginator
 from django.shortcuts import render
-from django.views.generic import ListView
-from garden_app import models, serializers
+from django.views.generic import ListView, CreateView
+from garden_app import models, serializers, forms
 from rest_framework import authentication, permissions, viewsets
 
 
@@ -164,3 +164,11 @@ coords_view = create_view(models.Coord, 'coord', 'entities/coord.html')
 taxon_view = create_view(models.Taxon, 'taxon', 'entities/taxon.html')
 comment_view = create_view(models.Comment, 'comment', 'entities/comment.html')
 herbarium_view = create_view(models.Herbarium, 'herbarium', 'entities/herbarium.html')
+
+
+class FloraCreateView(CreateView):
+    """View for creating a new Flora object."""
+
+    model = models.Flora
+    form_class = forms.FloraForm
+    template_name = 'flora_form.html'

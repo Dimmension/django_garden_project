@@ -17,6 +17,9 @@ urlpatterns = [
 
     path('floras/', views.FloraListView.as_view(), name='floras'),
     path('flora/', views.flora_view, name='flora'),
+    path(
+        'floras/create', views.FloraCreateView.as_view(success_url='/floras'), name='floraCreate',
+    ),
     path('collect_places/', views.CollectPlaceListView.as_view(), name='collect_places'),
     path('collect_place/', views.collect_place_view, name='collect_place'),
     path('labels/', views.LabelListView.as_view(), name='labels'),
