@@ -1,5 +1,5 @@
 # Botanical Garden
-
+Итоговый проект по курсе "Разработка программных модулей РПМ"
 **Prerequisites:**
 - Docker installed and running.
 - Docker Compose installed.
